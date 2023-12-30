@@ -2,7 +2,7 @@ import noProjectImage from '../assets/no-projects.png'
 import Button from './Button.jsx'
 
 
- function NoProjectSelected(){
+ function NoProjectSelected({onStartAddProject}){
     return(
         <div className='mt-24 text-center w-2/3'>
             <img src={noProjectImage} alt='An empty task list' className='w-16 h-16 object-contain mx-auto'/>
@@ -11,7 +11,7 @@ import Button from './Button.jsx'
             </h2>
             <p className='text-stone-400 mb-4'>Select a project or get started with a new one</p>
             <p className='mt-8'>
-                <Button>Create a new project</Button>
+                <Button onClick={onStartAddProject}>Create a new project</Button>
             </p>
         </div>
     )

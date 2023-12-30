@@ -1,6 +1,6 @@
-import ProjectsSidebar from "./components/ProjectsSideBar";
-import NewProject from "./components/NewProject";
-import  NoProjectSelected from "./components/NoProjectSelected";
+import ProjectsSidebar from "./components/ProjectsSideBar.jsx";
+import NewProject from "./components/NewProject.jsx";
+import  NoProjectSelected from "./components/NoProjectSelected.jsx";
 import { useState } from "react";
 
 
@@ -17,13 +17,23 @@ function handleStartAddProject(){
       ...prevState,
       selecte4dProjectId: null,
     };
-  })
+  });
 }
-  return (
-   <main className="h-screen my-8 flex gap-8">
-   <ProjectsSidebar />
+let content;
+if(projectState.selecte4dProjectId === null){
+  content = <NewProject />
+}else if(projectState.selecte4dProjectId === undefined){
+  content = <NoProjectSelected onStartAddProject={handleStartAddProject}/>
    
-   <NoProjectSelected onStartedAddProject={handleStartAddProject}/>
+}
+
+  return (
+
+    
+   <main className="h-screen my-8 flex gap-8">
+   <ProjectsSidebar onStartAddProject={handleStartAddProject} />
+   
+   {content}
    
    </main>
   );
