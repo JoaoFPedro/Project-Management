@@ -24,10 +24,11 @@ function handleAddProject(projecData){
   setProjectState(prevState => {
     const newProject = {
       ...projecData,
-      id:Math.random(),
+         id:Math.random(),
     };
     return {
       ...prevState,
+      selecte4dProjectId: undefined,
       projects:[...prevState.projects, newProject]
     }
   })
@@ -43,7 +44,7 @@ if(projectState.selecte4dProjectId === null){
 }
   return (    
    <main className="h-screen my-8 flex gap-8">
-   <ProjectsSidebar onStartAddProject={handleStartAddProject} />   
+   <ProjectsSidebar onStartAddProject={handleStartAddProject} projects ={projectState.projects}/>   
    {content}   
    </main>
   );
