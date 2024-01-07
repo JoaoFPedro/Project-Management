@@ -11,7 +11,7 @@ function NewProject({onAdd}){
         const enteredDescription = description.current.value;
         const enteredDueDate = dueDate.current.value;
 
-        //Validation......
+        if(enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredDueDate.trim() === '')
         onAdd({
             title:  enteredTitle,
             description: enteredDescription,
@@ -32,7 +32,7 @@ function NewProject({onAdd}){
             <div>
                 <Input ref={title} label ="Title" />
                 <Input ref={description} label ="Description" textarea/>
-                <Input ref={dueDate} label ="Due Date"/>
+                <Input type="date" ref={dueDate} label ="Due Date"/>
             </div>
         </div>
     )
