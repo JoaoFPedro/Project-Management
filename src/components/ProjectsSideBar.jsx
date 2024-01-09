@@ -11,10 +11,10 @@ function ProjectsSidebar ({onStartAddProject, projects}){
             </Button>
         </div>
         <ul>
-            {projects.map(project =>   <li key={project.id}>
+            {projects.map((project) =>   (<li key={project.id}>
                     <button className="w-full text-left px-2 py-1 rounded-sm my-1 text-stone-400">{project.title}</button>
                 </li>
-            )}
+            ))}
         </ul>
     </aside>
     )

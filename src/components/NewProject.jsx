@@ -1,17 +1,24 @@
 import { useRef } from "react";
 import Input from "./Input.jsx";
+import Modal from "./Modal.jsx";
 
 function NewProject({onAdd}){
     const title = useRef();
     const description = useRef();
     const dueDate = useRef();
+    const modal = useRef();
 
     function handleSave(){
+        
         const enteredTitle = title.current.value;
         const enteredDescription = description.current.value;
         const enteredDueDate = dueDate.current.value;
 
-        if(enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredDueDate.trim() === '')
+        if(enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredDueDate.trim() === ''){
+            modal.current.open();
+            return
+        }
+        
         onAdd({
             title:  enteredTitle,
             description: enteredDescription,
@@ -20,6 +27,12 @@ function NewProject({onAdd}){
 
     }  
     return(
+        <>
+        <Modal ref={modal} buttonCaption="Close">
+            <h2>Inavlid Input</h2>
+            <p>You forgot to enter a value, dumbass</p>
+            <p>Set the value for the empty fields</p>
+        </Modal>
         <div className="w-[35rem] mt-16">
             <menu className="flex items-center justify-end gap-4 my-4">
                 <li>
@@ -32,9 +45,10 @@ function NewProject({onAdd}){
             <div>
                 <Input ref={title} label ="Title" />
                 <Input ref={description} label ="Description" textarea/>
-                <Input type="date" ref={dueDate} label ="Due Date"/>
+                <Input ref={dueDate} type="date"  label ="Due Date"/>
             </div>
         </div>
+        </>
     )
         
     

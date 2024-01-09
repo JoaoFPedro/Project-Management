@@ -37,9 +37,9 @@ function handleAddProject(projecData){
 console.log(projectState);
 let content;
 if(projectState.selecte4dProjectId === null){
-  content = <NewProject onAdd={handleAddProject} />
+  content = <NewProject onAdd={handleAddProject} />;
 }else if(projectState.selecte4dProjectId === undefined){
-  content = <NoProjectSelected onStartAddProject={handleStartAddProject}/>
+  content = <NoProjectSelected onStartAddProject={handleStartAddProject}/>;
    
 }
   return (    
